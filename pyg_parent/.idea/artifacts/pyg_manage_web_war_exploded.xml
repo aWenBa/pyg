@@ -1,0 +1,21 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="pyg_manage_web:war exploded">
+    <output-path>$PROJECT_DIR$/pyg_manage_web/target/pyg_manage_web-1.0-SNAPSHOT</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="pyg_manage_web" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="archive" name="pyg_page_interface-1.0-SNAPSHOT.jar">
+            <element id="module-output" name="pyg_page_interface" />
+          </element>
+        </element>
+      </element>
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/pyg_manage_web/target/pyg_manage_web-1.0-SNAPSHOT/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="javaee-facet-resources" facet="pyg_manage_web/web/Web" />
+    </root>
+  </artifact>
+</component>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+             xmlns:beans="http://www.springframework.org/schema/beans"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+             xsi:schemaLocation="http://www.springframework.org/schema/beans
+                                 http://www.springframework.org/schema/beans/spring-beans.xsd
+                                 http://www.springframework.org/schema/security
+                                 http://www.springframework.org/schema/security/spring-security.xsd http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    <!-- 以下页面不被拦截
+    匿名访问 不登录也可以访问的资源 没有任何用户信息  匹配规则：从上到下-->
+    <http pattern="/*.html" security="none"></http>
+    <http pattern="/seller/add.do" security="none"></http>
+    <http pattern="/css/**" security="none"></http>
+    <http pattern="/img/**" security="none"></http>
+    <http pattern="/js/**" security="none"></http>
+    <http pattern="/plugins/**" security="none"></http>
+
+
+    <!-- 页面拦截规则
+        use-expressions：默认是true，使用SPEL，access="hasRole('ROLE_SELLER')"-->
+    <http use-expressions="false">
+        <intercept-url pattern="/**" access="ROLE_ADMIN"/>
+
+        <!--form-login:标签会加载一个filter 认证过滤器
+			default-target-url 登陆成功后默认的页面
+			authentication-failure-url 登陆失败后跳转的路径 重定向
+
+		-->
+        <form-login login-page="/shoplogin.html" default-target-url="/admin/index.html"></form-login>
+        <csrf disabled="true"></csrf>
+        <headers>
+            <frame-options policy="SAMEORIGIN"></frame-options>
+        </headers>
+
+        <logout/>
+    </http>
+
+    <!--认证管理-->
+    <authentication-manager>
+        <authentication-provider user-service-ref="userDetailsServiceImpl">
+            <password-encoder ref="bCryptPasswordEncoder"></password-encoder>
+        </authentication-provider>
+    </authentication-manager>
+
+    <beans:bean id="bCryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"></beans:bean>
+
+    <!--依赖注入类似于ref-->
+    <beans:bean name="userDetailsServiceImpl" class="com.pyg.shop.service.impl.UserDetailsServiceImpl">
+        <beans:property name="sellerService" ref="sellerService" ></beans:property>
+    </beans:bean>
+
+    <!-- 获取sellerService实现类 需要通过dubbo，@reference的配置方式 -->
+    <dubbo:application name="pyg_shop_web"/>
+    <dubbo:registry address="zookeeper://192.168.25.128:2181"/>
+    <dubbo:reference id="sellerService" interface="com.pyg.sellergoods.service.SellerService"></dubbo:reference>
+
+</beans:beans>

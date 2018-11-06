@@ -1,0 +1,4 @@
+0:0:0:0:0:0:0:1 - - [03/Nov/2018:20:56:44 +0800] "GET /cart/addGoodsToCartList.do?itemId=1229083&num=100 HTTP/1.1" 200 41 http-bio-9107-exec-1 950
+0:0:0:0:0:0:0:1 - - [03/Nov/2018:20:56:46 +0800] "GET /favicon.ico HTTP/1.1" 302 - http-bio-9107-exec-3 26
+0:0:0:0:0:0:0:1 - - [03/Nov/2018:20:56:57 +0800] "GET /cart/findCartList.do HTTP/1.1" 200 392 http-bio-9107-exec-5 11
+0:0:0:0:0:0:0:1 - - [03/Nov/2018:20:56:57 +0800] "GET /favicon.ico HTTP/1.1" 302 - http-bio-9107-exec-7 10

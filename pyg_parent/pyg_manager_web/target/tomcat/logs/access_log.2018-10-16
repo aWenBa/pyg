@@ -1,0 +1,6 @@
+0:0:0:0:0:0:0:1 - - [16/Oct/2018:15:27:40 +0800] "GET /admin/brand.html HTTP/1.1" 302 - http-bio-9101-exec-1 117
+0:0:0:0:0:0:0:1 - - [16/Oct/2018:15:27:40 +0800] "GET /login.html HTTP/1.1" 304 - http-bio-9101-exec-3 42
+0:0:0:0:0:0:0:1 - - [16/Oct/2018:15:27:41 +0800] "GET /js/base.js HTTP/1.1" 304 - http-bio-9101-exec-4 35
+0:0:0:0:0:0:0:1 - - [16/Oct/2018:15:27:41 +0800] "GET /js/service/loginService.js HTTP/1.1" 304 - http-bio-9101-exec-2 44
+0:0:0:0:0:0:0:1 - - [16/Oct/2018:15:27:41 +0800] "GET /js/controller/indexController.js HTTP/1.1" 304 - http-bio-9101-exec-5 57
+0:0:0:0:0:0:0:1 - - [16/Oct/2018:15:27:41 +0800] "GET /assets/img/favicon.ico HTTP/1.1" 302 - http-bio-9101-exec-8 9
